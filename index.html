@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>შენთვის</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background">
+        <div class="pink-layer"></div>
+        <div class="blue-layer" id="blue-layer"></div>
+    </div>   
+    
+    <h1 id="main-text">გავისეირნოთ?</h1>
+    
+    <div class="buttons">
+        <button class="btn1" id="love-btn">კი</button>
+        <button class="btn2" id="no-love-btn">არა</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        var noLoveBtn = document.getElementById('no-love-btn');
+        var loveBtn = document.getElementById('love-btn');
+        var clickCount = 0;
+
+        function handleClick() {
+            clickCount++;
+            switch(clickCount) {
+                case 1:
+                    noLoveBtn.textContent = "დარწმუნებული ხარ?";
+                    break;
+                case 2:
+                    noLoveBtn.textContent = "დაფიქრდი :-|";
+                    break;
+                case 3:
+                    noLoveBtn.textContent = "კიდევ დაფიქრდი :’-( ";
+                    break;
+                case 4:
+                    noLoveBtn.textContent = "მგონი შეგეშალა)";
+                    break;
+                case 5: 
+                    noLoveBtn.textContent = "სხვა ვარიანტს შეხედე((";
+                    break;
+                case 6:
+                    noLoveBtn.textContent = "არჩევანს არ დაგიტოვებ :)";
+                    break;
+                case 7:
+                    noLoveBtn.style.display = 'none'; // Скрыть кнопку .btn2 при седьмом нажатии
+                    break;
+                default:
+                    noLoveBtn.textContent = "არა";
+                    clickCount = 0; // Reset count
+            }
+
+            // Increase the size of .btn1
+            var computedStyle = window.getComputedStyle(loveBtn);
+            var fontSize = parseInt(computedStyle.getPropertyValue('font-size'));
+            loveBtn.style.fontSize = (fontSize + 18) + 'px';
+        }
+
+        noLoveBtn.addEventListener('click', handleClick);
+
+        loveBtn.addEventListener('click', function() {
+            document.getElementById('main-text').textContent = 'გაემზადე ხვალისთვის';
+            loveBtn.style.display = 'none';
+            noLoveBtn.style.display = 'none';
+        });
+
+        document.querySelector('.btn1').addEventListener('click', function() {
+            document.querySelector('img').style.display = 'none';
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+</body>
+</html>
